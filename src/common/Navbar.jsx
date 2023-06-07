@@ -1,23 +1,62 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const listItems = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-500 text-base font-medium"
+              : "text-base font-medium text-[#374151]"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <a>Parent</a>
+        <NavLink
+          to="/instructors"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-500 text-base font-medium"
+              : "text-base font-medium text-[#374151]"
+          }
+        >
+          Instructors
+        </NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink
+          to="/classes"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-500 text-base font-medium"
+              : "text-base font-medium text-[#374151]"
+          }
+        >
+          Classes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-500 text-base font-medium"
+              : "text-base font-medium text-[#374151]"
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-gray-100 my-2">
+    <div className="navbar bg-gradient-to-r from-gray-100 to-gray-200 my-2 rounded-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
