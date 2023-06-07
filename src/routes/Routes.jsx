@@ -3,15 +3,14 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/home/Home";
 
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
         path: "/",
-        component: <MainLayout />,
-        children: [
-            {
-                path: "/",
-                element: <Home />
-            }
-        ]
-    },
-    
-])
+        element: <Home />,
+      },
+    ],
+  },
+]);
