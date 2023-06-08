@@ -1,0 +1,103 @@
+[
+    {
+      "name": "Serve and Smash",
+      "image": "https://i.ibb.co/bB7gTPZ/serve-smash.jpg",
+      "instructorName": "John Smith",
+      "instructorEmail": "johnsmith@example.com",
+      "availableSeats": 10,
+      "price": 50,
+      "Status": "Pending",
+      "numOfStudents": 20
+    },
+    {
+      "name": "Spin Control",
+      "image": "https://i.ibb.co/MPP5Qtk/spin-control.jpg",
+      "instructorName": "Sarah Johnson",
+      "instructorEmail": "sarahjohnson@example.com",
+      "availableSeats": 8,
+      "price": 75,
+      "Status": "Approved",
+      "numOfStudents": 26
+    },
+    {
+      "name": "Backhand Blitz",
+      "image": "https://i.ibb.co/J78DYgq/backhand.jpg",
+      "instructorName": "Michael Lee",
+      "instructorEmail": "michaellee@example.com",
+      "availableSeats": 12,
+      "price": 60,
+      "Status": "Pending",
+      "numOfStudents": 15
+    },
+    {
+      "name": "Forehand Frenzy",
+      "image": "https://i.ibb.co/hs5sk7K/Forehand-drive-1920x1080.jpg",
+      "instructorName": "Emily Davis",
+      "instructorEmail": "emilydavis@example.com",
+      "availableSeats": 10,
+      "price": 55,
+      "Status": "Approved",
+      "numOfStudents": 36
+    },
+    {
+      "name": "Power Shots Masterclass",
+      "image": "https://i.ibb.co/qMgts3k/power-shot.jpg",
+      "instructorName": "David Wilson",
+      "instructorEmail": "davidwilson@example.com",
+      "availableSeats": 15,
+      "price": 65,
+      "Status": "Pending",
+      "numOfStudents": 23
+    },
+    {
+      "name": "Defensive Strategies",
+      "image": "https://i.ibb.co/5YGw0Tz/deffencive.png",
+      "instructorName": "Karen Thompson",
+      "instructorEmail": "karenthompson@example.com",
+      "availableSeats": 10,
+      "price": 60,
+      "Status": "Approved",
+      "numOfStudents": 20
+    },
+    {
+      "name": "Topspin Tactics",
+      "image": "https://i.ibb.co/n7vqW00/topSpin.jpg",
+      "instructorName": "Robert Miller",
+      "instructorEmail": "robertmiller@example.com",
+      "availableSeats": 12,
+      "price": 70,
+      "Status": "Pending",
+      "numOfStudents": 16
+    },
+    {
+      "name": "Fast-Paced Rallying",
+      "image": "https://i.ibb.co/PGzcL92/fast-paced.jpg",
+      "instructorName": "Jennifer Parker",
+      "instructorEmail": "jenniferparker@example.com",
+      "availableSeats": 10,
+      "price": 55,
+      "Status": "Approved",
+      "numOfStudents": 26
+    },
+    {
+      "name": "Tactical Strategies",
+      "image": "https://i.ibb.co/0tWRjb1/tachtichs.jpg",
+      "instructorName": "Andrew Turner",
+      "instructorEmail": "andrewturner@example.com",
+      "availableSeats": 10,
+      "price": 60,
+      "Status": "Pending",
+      "numOfStudents": 12
+    },
+    {
+      "name": "Drop Shot Delight",
+      "image": "https://i.ibb.co/hXQ9KwL/dropshot.jpg",
+      "instructorName": "Emma Davis",
+      "instructorEmail": "emmadavis@example.com",
+      "availableSeats": 15,
+      "price": 65,
+      "Status": "Approved",
+      "numOfStudents": 18
+    }
+  ]
+  
