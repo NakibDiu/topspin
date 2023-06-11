@@ -11,6 +11,6 @@ body {
     @apply scale-105 bg-gray-400 shadow-lg transition-transform duration-300 cursor-pointer;
   }
   .button {
-    @apply bg-orange-300 hover:bg-orange-600 hover:text-white border-none
+    @apply bg-orange-300 hover:bg-orange-600 hover:text-white border-none;
   }
 }

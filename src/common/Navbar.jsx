@@ -1,7 +1,19 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-
+import { MdOutlineDarkMode, MdDarkMode } from "react-icons/md";
+import { useEffect, useState } from "react";
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+    console.log(theme);
+  }, [theme]);
+
   const listItems = (
     <>
       <li>
@@ -89,7 +101,13 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{listItems}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end space-x-3">
+        <button
+          className="btn btn-circle btn-sm"
+          onClick={toggleTheme}
+        >
+          {theme === "light" ? <MdOutlineDarkMode size={28} /> : <MdDarkMode size={28} />}
+        </button>
         <a className="btn btn-warning">Login</a>
       </div>
     </div>
