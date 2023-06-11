@@ -41,7 +41,7 @@ const PopularClasses = () => {
                 </div>
               </div>
               <div className="card-actions justify-end">
-                <button className="btn bg-orange-300 hover:bg-orange-600 hover:text-white border-none">
+                <button className="btn button">
                   Book Now
                 </button>
               </div>
