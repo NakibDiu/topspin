@@ -3,6 +3,7 @@ import classes from "../../assets/data/classes.json";
 import { FiUserCheck } from "react-icons/fi";
 import { MdEventAvailable } from "react-icons/md";
 import { ImPriceTags } from "react-icons/im";
+import { Link } from "react-router-dom";
 
 const PopularClasses = () => {
   const popular = [...classes]
@@ -41,14 +42,18 @@ const PopularClasses = () => {
                 </div>
               </div>
               <div className="card-actions justify-end">
-                <button className="btn button">
-                  Book Now
-                </button>
+                <button className="btn button">Book Now</button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <Link
+        to="/classes"
+        className="flex justify-center items-center w-fit mx-auto btn button"
+      >
+        <button>See More</button>
+      </Link>
     </div>
   );
 };
