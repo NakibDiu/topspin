@@ -15,7 +15,7 @@ const PopularClasses = () => {
         Popular Classes
       </h2>
       <p className="mt-4  text-xl text-gray-500 text-center">
-        Here are some of the most popular classes in the classroom.
+        Here are some of the most popular classes in the camp.
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-10 my-10">
         {popular.map((item, index) => (
