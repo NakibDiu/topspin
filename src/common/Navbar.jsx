@@ -11,7 +11,6 @@ const Navbar = () => {
 
   useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", theme);
-    console.log(theme);
   }, [theme]);
 
   const listItems = (
@@ -108,7 +107,7 @@ const Navbar = () => {
         >
           {theme === "light" ? <MdOutlineDarkMode size={28} /> : <MdDarkMode size={28} />}
         </button>
-        <a className="btn btn-warning">Login</a>
+        <Link to="/login" className="btn btn-warning">Login</Link>
       </div>
     </div>
   );

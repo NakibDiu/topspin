@@ -19,4 +19,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </div>
   </React.StrictMode>
 );
-o;
