@@ -20,7 +20,12 @@ const PopularClasses = () => {
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-10 my-10">
         {popular.map((item, index) => (
-          <div className="card w-full bg-base-100 shadow-xl image-full h-[250px]" key={index}>
+          <div
+            className="card w-full bg-base-100 shadow-xl image-full h-[250px]"
+            key={index}
+            data-aos="flip-right"
+            data-aos-duration="1000"
+          >
             <figure>
               <img src={item.image} alt="Shoes" className="w-full h-full" />
             </figure>

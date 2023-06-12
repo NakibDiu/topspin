@@ -112,7 +112,8 @@ const Instructors = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-10 my-10">
         {topInstructor.map((instructor, index) => {
           return (
-            <div className="bg-gradient-to-b from-gray-200 to-gray-500 rounded-lg shadow-lg p-4 hover-card" key={index}>
+            <div className="bg-gradient-to-b from-gray-200 to-gray-500 rounded-lg shadow-lg p-4 hover-card" key={index} data-aos="zoom-in"
+            data-aos-duration="1000">
               <img
                 src={instructor.image}
                 alt="Instructor Image"
