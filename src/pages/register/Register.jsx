@@ -1,28 +1,67 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { createUserWithEmail, updateUserProfile } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
+    reset,
   } = useForm();
+
+  const navigate = useNavigate();
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data.name, data.photoUrl);
+    createUserWithEmail(data.email, data.password)
+      .then((userInfo) => {
+        const newUser = userInfo.user;
+        updateUserProfile(data.name, data.photoUrl)
+          .then(() => {
+            console.log(newUser);
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User Created Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/login");
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: err.message,
+            });
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      });
   };
 
   return (
     <div className="bg-gray-300 w-full min-h-screen my-10 py-10 bg-gradient-to-br from-cyan-50 via-sky-200 to-blue-400">
-      <div className="max-w-lg mx-auto border border-gray-300 p-6 lg:p-10 rounded-md shadow-xl bg-white">
+      <div className="max-w-lg mx-auto border-y-8 border-gray-300 p-6 lg:p-10 rounded-xl shadow-xl bg-white">
         <h1 className="text-center text-3xl lg:text-5xl font-bold">Register</h1>
         <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
