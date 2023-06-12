@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { loginWithEmail, signInWithGoogle } = useContext(AuthContext);
+  const { loginWithEmail, signInWithGoogle, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -117,7 +117,7 @@ const Login = () => {
             )}
           </div>
           <div className="mb-4">
-            <button className="btn button" type="submit">
+            <button className="btn button" type="submit" disabled={loading}>
               Login
             </button>
           </div>
@@ -129,7 +129,7 @@ const Login = () => {
         </div>
         <hr className="my-6 w-4/5 mx-auto" />
         <div className="flex justify-center items-center">
-          <button className="btn btn-circle" onClick={handleGoogleSignUp}>
+          <button className="btn btn-circle" onClick={handleGoogleSignUp} disabled={loading}>
             <BsGoogle />
           </button>
         </div>

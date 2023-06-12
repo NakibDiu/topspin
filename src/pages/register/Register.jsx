@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUserWithEmail, updateUserProfile, signInWithGoogle } =
+  const { createUserWithEmail, updateUserProfile, signInWithGoogle, loading } =
     useContext(AuthContext);
   const {
     register,
@@ -247,7 +247,7 @@ const Register = () => {
             ></textarea>
           </div>
           <div className="mb-4">
-            <button className="btn button" type="submit">
+            <button className="btn button" type="submit" disabled={loading}>
               Register
             </button>
           </div>
@@ -259,7 +259,11 @@ const Register = () => {
         </div>
         <hr className="my-6 w-4/5 mx-auto" />
         <div className="flex justify-center items-center">
-          <button className="btn btn-circle" onClick={handleGoogleSignUp}>
+          <button
+            className="btn btn-circle"
+            onClick={handleGoogleSignUp}
+            disabled={loading}
+          >
             <BsGoogle />
           </button>
         </div>
