@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import InstructorsPage from "../pages/instructors/InstructorsPage";
+import ClassesPage from "../pages/classes/ClassesPage";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <InstructorsPage />,
+      },
+      {
+        path: "/classes",
+        element: <ClassesPage />,
       }
     ],
   },

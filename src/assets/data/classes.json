@@ -6,7 +6,7 @@
       "instructorEmail": "johnsmith@example.com",
       "availableSeats": 10,
       "price": 50,
-      "Status": "Pending",
+      "status": "Pending",
       "numOfStudents": 20
     },
     {
@@ -16,7 +16,7 @@
       "instructorEmail": "sarahjohnson@example.com",
       "availableSeats": 8,
       "price": 75,
-      "Status": "Approved",
+      "status": "Approved",
       "numOfStudents": 26
     },
     {
@@ -26,7 +26,7 @@
       "instructorEmail": "michaellee@example.com",
       "availableSeats": 12,
       "price": 60,
-      "Status": "Pending",
+      "status": "Pending",
       "numOfStudents": 15
     },
     {
@@ -36,7 +36,7 @@
       "instructorEmail": "emilydavis@example.com",
       "availableSeats": 10,
       "price": 55,
-      "Status": "Approved",
+      "status": "Approved",
       "numOfStudents": 36
     },
     {
@@ -46,7 +46,7 @@
       "instructorEmail": "davidwilson@example.com",
       "availableSeats": 15,
       "price": 65,
-      "Status": "Pending",
+      "status": "Pending",
       "numOfStudents": 23
     },
     {
@@ -56,7 +56,7 @@
       "instructorEmail": "karenthompson@example.com",
       "availableSeats": 10,
       "price": 60,
-      "Status": "Approved",
+      "status": "Approved",
       "numOfStudents": 20
     },
     {
@@ -66,7 +66,7 @@
       "instructorEmail": "robertmiller@example.com",
       "availableSeats": 12,
       "price": 70,
-      "Status": "Pending",
+      "status": "Pending",
       "numOfStudents": 16
     },
     {
@@ -76,7 +76,7 @@
       "instructorEmail": "jenniferparker@example.com",
       "availableSeats": 10,
       "price": 55,
-      "Status": "Approved",
+      "status": "Approved",
       "numOfStudents": 26
     },
     {
@@ -86,7 +86,7 @@
       "instructorEmail": "andrewturner@example.com",
       "availableSeats": 10,
       "price": 60,
-      "Status": "Pending",
+      "status": "Pending",
       "numOfStudents": 12
     },
     {
@@ -96,7 +96,7 @@
       "instructorEmail": "emmadavis@example.com",
       "availableSeats": 15,
       "price": 65,
-      "Status": "Approved",
+      "status": "Approved",
       "numOfStudents": 18
     }
   ]

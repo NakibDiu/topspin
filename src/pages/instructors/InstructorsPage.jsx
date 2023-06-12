@@ -20,7 +20,7 @@ const InstructorsPage = () => {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="min-h-[150px] bg-gray-700 flex justify-center items-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl text-center">
           Our Instructors
