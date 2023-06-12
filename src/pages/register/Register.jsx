@@ -64,8 +64,7 @@ const Register = () => {
     signInWithGoogle()
       .then((userInfo) => {
         const newUser = userInfo.user;
-        console.log(newUser);
-        reset();
+        // console.log(newUser);
         Swal.fire({
           position: "center",
           icon: "success",

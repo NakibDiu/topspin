@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { loginWithEmail, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleTogglePassword = () => {
@@ -16,7 +21,51 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    loginWithEmail(data.email, data.password)
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log in Successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    signInWithGoogle()
+      .then((userInfo) => {
+        const newUser = userInfo.user;
+        // console.log(newUser);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log in Successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      });
   };
 
   return (
@@ -68,7 +117,9 @@ const Login = () => {
             )}
           </div>
           <div className="mb-4">
-            <button className="btn button" type="submit">Login</button>
+            <button className="btn button" type="submit">
+              Login
+            </button>
           </div>
         </form>
         <div className="text-center">
@@ -78,7 +129,7 @@ const Login = () => {
         </div>
         <hr className="my-6 w-4/5 mx-auto" />
         <div className="flex justify-center items-center">
-          <button className="btn btn-circle">
+          <button className="btn btn-circle" onClick={handleGoogleSignUp}>
             <BsGoogle />
           </button>
         </div>
