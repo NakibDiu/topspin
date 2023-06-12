@@ -16,13 +16,12 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-
     console.log(data);
   };
 
   return (
-    <div className="bg-gray-300 w-full min-h-screen my-10 py-10 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500">
-      <div className="max-w-lg  mx-auto  border border-gray-300 p-6 lg:p-10 rounded-md shadow-xl bg-white">
+    <div className="bg-gray-300 w-full min-h-screen my-10 py-10 bg-gradient-to-br from-yellow-100 via-orange-200 to-red-300">
+      <div className="max-w-lg  mx-auto  border-y-8 border-gray-300 p-6 lg:p-10 rounded-xl shadow-xl bg-white">
         <h1 className="text-center text-3xl lg:text-5xl font-bold">Log in</h1>
         <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
