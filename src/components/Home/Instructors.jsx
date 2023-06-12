@@ -89,7 +89,7 @@ const Instructors = () => {
   const instructorQuery = useQuery({
     queryKey: ["instructors"],
     queryFn: (obj) => {
-      console.log(obj);
+      // console.log(obj);
       return [...instructorsArray];
     },
   });
@@ -110,9 +110,9 @@ const Instructors = () => {
         Discover the expertise and knowledge of our top-rated instructors
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-10 my-10">
-        {topInstructor.map((instructor) => {
+        {topInstructor.map((instructor, index) => {
           return (
-            <div className="bg-gradient-to-b from-gray-200 to-gray-500 rounded-lg shadow-lg p-4 hover-card">
+            <div className="bg-gradient-to-b from-gray-200 to-gray-500 rounded-lg shadow-lg p-4 hover-card" key={index}>
               <img
                 src={instructor.image}
                 alt="Instructor Image"

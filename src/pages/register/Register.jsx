@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUserWithEmail, updateUserProfile } = useContext(AuthContext);
+  const { createUserWithEmail, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -51,6 +52,31 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    signInWithGoogle()
+      .then((userInfo) => {
+        const newUser = userInfo.user;
+        console.log(newUser);
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -234,7 +260,7 @@ const Register = () => {
         </div>
         <hr className="my-6 w-4/5 mx-auto" />
         <div className="flex justify-center items-center">
-          <button className="btn btn-circle">
+          <button className="btn btn-circle" onClick={handleGoogleSignUp}>
             <BsGoogle />
           </button>
         </div>
