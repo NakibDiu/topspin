@@ -12,12 +12,11 @@ const ClassesPage = () => {
   //   },
   // });
   const fetchClasses = async () => {
-    const response = await fetch("https://topspin-backend.vercel.app/classes");
+    const response = await fetch("http://localhost:5000/classes");
     const data = await response.json();
     return data;
   };
   const { data, isLoading, error } = useQuery("classes", fetchClasses);
-
 
   if (isLoading) {
     return (
