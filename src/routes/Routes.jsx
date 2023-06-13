@@ -8,6 +8,7 @@ import ClassesPage from "../pages/classes/ClassesPage";
 import Dashboard from "../layout/Dashboard";
 import SelectedClass from "../pages/dashboard/SelectedClass";
 import EnrolledClass from "../pages/dashboard/EnrolledClass";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "selectedClass",
