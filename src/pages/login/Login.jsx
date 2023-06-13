@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -8,7 +8,11 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginWithEmail, signInWithGoogle, loading } = useContext(AuthContext);
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
@@ -32,7 +36,7 @@ const Login = () => {
           timer: 1500,
         });
         reset();
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -49,10 +53,32 @@ const Login = () => {
       .then((userInfo) => {
         const newUser = userInfo.user;
         // console.log(newUser);
+        const saveUser = { name: newUser.displayName, email: newUser.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User Created Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, { replace: true });
+          });
+      })
+      .catch((error) => {
+        console.log(error);
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Log in Successfull",
+          title: "User Created Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -129,7 +155,11 @@ const Login = () => {
         </div>
         <hr className="my-6 w-4/5 mx-auto" />
         <div className="flex justify-center items-center">
-          <button className="btn btn-circle" onClick={handleGoogleSignUp} disabled={loading}>
+          <button
+            className="btn btn-circle"
+            onClick={handleGoogleSignUp}
+            disabled={loading}
+          >
             <BsGoogle />
           </button>
         </div>
