@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const {
@@ -14,6 +15,41 @@ const ManageUsers = () => {
       return response.json();
     },
   });
+
+  const makeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  const makeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: `${user.name} is an instructor Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="w-full">
@@ -38,7 +74,6 @@ const ManageUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
                 {users.map((user, index) => {
                   return (
                     <tr key={user._id}>
@@ -46,10 +81,19 @@ const ManageUsers = () => {
                       <td>{user?.name}</td>
                       <td>{user?.email}</td>
                       <td className="flex flex-col md:flex-row gap-2 items-center justify-center">
-                        <button className="btn btn-sm btn-info">admin</button>
-                        <button className="btn btn-sm btn-warning">instructor</button>
-                        <button className="btn btn-sm btn-error">
-                          <FaTrashAlt />
+                        <button
+                          className="btn btn-sm btn-info"
+                          onClick={() => makeAdmin(user)}
+                          disabled={user.role === "admin"}
+                        >
+                          admin
+                        </button>
+                        <button
+                          className="btn btn-sm btn-warning"
+                          onClick={() => makeInstructor(user)}
+                          disabled={user.role === "instructor"}
+                        >
+                          instructor
                         </button>
                       </td>
                     </tr>
