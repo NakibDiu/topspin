@@ -1,7 +1,12 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { NavLink, Outlet } from "react-router-dom";
+import { FaHome, FaUser } from "react-icons/fa";
+import { GiPingPongBat } from "react-icons/gi";
 const Dashboard = () => {
+  const isAdmin = true;
+  const isInstructor = false;
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -45,14 +50,42 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-orange-200 text-base-content py-10 space-y-2">
           {/* Sidebar content here */}
           <li className=" font-semibold">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">
+              <FaHome /> Home
+            </NavLink>
           </li>
-          <li className=" font-semibold">
-            <NavLink to="/dashboard/selectedClass">Selected Class</NavLink>
-          </li>
-          <li className=" font-semibold">
-            <NavLink to="/dashboard/enrolledClass">Enrolled Class</NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/manageClass">
+                  <GiPingPongBat /> Manage Class
+                </NavLink>
+              </li>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/manageUsers">
+                  <FaUser /> Manage Users
+                </NavLink>
+              </li>
+            </>
+          ) : isInstructor ? (
+            <>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/myClass">My Class</NavLink>
+              </li>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/addClass">Add Class</NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/selectedClass">Selected Class</NavLink>
+              </li>
+              <li className=" font-semibold">
+                <NavLink to="/dashboard/enrolledClass">Enrolled Class</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
