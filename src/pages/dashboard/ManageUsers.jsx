@@ -10,13 +10,14 @@ const ManageUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/users`);
+      const response = await fetch(`${backendUrl}/users`);
       return response.json();
     },
   });
+  const backendUrl = import.meta.env.VITE_backendUrl
 
   const makeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`${backendUrl}/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -32,8 +33,9 @@ const ManageUsers = () => {
         }
       });
   };
+
   const makeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`${backendUrl}/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

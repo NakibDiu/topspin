@@ -14,14 +14,17 @@ const AddClass = () => {
     reset,
     onSubmit,
   } = useForm();
+  const backendUrl = import.meta.env.VITE_backendUrl
+
 
   const handleAddClass = (data) => {
     const formData = {
       ...data,
       status: "Pending",
     };
+    console.log(formData);
     axios
-      .post("http://localhost:5000/classes", formData)
+      .post(`${backendUrl}/classes`, formData)
       .then((response) => {
         console.log(response.data);
         if (response.data.insertedId) {
@@ -36,7 +39,13 @@ const AddClass = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
@@ -95,10 +104,14 @@ const AddClass = () => {
               <input
                 type="text"
                 id="instructorName"
-                {...register("instructorName", { required: false })}
+                {...register("instructorName", {
+                  required: false,
+                  defaultValue: user?.displayName,
+                  readOnly: true
+                })}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                value={user?.displayName}
-                disabled
+                defaultValue={user?.displayName}
+                readOnly
               />
             </div>
             <div className="mb-4">
@@ -111,10 +124,14 @@ const AddClass = () => {
               <input
                 type="email"
                 id="instructorEmail"
-                {...register("instructorEmail", { required: false })}
+                {...register("instructorEmail", {
+                  required: false,
+                  defaultValue: user?.email,
+                  readOnly: true
+                })}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                value={user?.email}
-                disabled
+                defaultValue={user?.email}
+                readOnly
               />
             </div>
             <div className="mb-4">

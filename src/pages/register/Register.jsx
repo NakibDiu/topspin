@@ -24,16 +24,17 @@ const Register = () => {
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+  const backendUrl = import.meta.env.VITE_backendUrl
 
   const onSubmit = (data) => {
-    console.log(data.name, data.photoUrl);
+    // console.log(data.name, data.photoUrl);
     createUserWithEmail(data.email, data.password)
       .then((userInfo) => {
         const newUser = userInfo.user;
         updateUserProfile(data.name, data.photoUrl)
           .then(() => {
             const saveUser = { name: data.name, email: data.email };
-            fetch("http://localhost:5000/users", {
+            fetch(`${backendUrl}/users`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -80,7 +81,7 @@ const Register = () => {
         const newUser = userInfo.user;
         // console.log(newUser);
         const saveUser = { name: newUser.displayName, email: newUser.email };
-        fetch("http://localhost:5000/users", {
+        fetch(`${backendUrl}/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -26,6 +26,8 @@ const ClassCard = ({ classData }) => {
 
   const cardStyle = availableSeats === 0 ? "bg-red-400" : "bg-white";
   const buttonDisabled = availableSeats === 0;
+  const backendUrl = import.meta.env.VITE_backendUrl
+
 
   const handleSelect = (classData) => {
     if (user && user.email) {
@@ -37,7 +39,7 @@ const ClassCard = ({ classData }) => {
         availableSeats,
         email: user.email,
       };
-      fetch("http://localhost:5000/selected", {
+      fetch(`${backendUrl}/selected`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const SelectedClass = () => {
   const { refetch, selectedClass, isLoading } = useSelectedClass();
+  const backendUrl = import.meta.env.VITE_backendUrl
 
   const handleDelelte = (cls) => {
     Swal.fire({
@@ -16,7 +17,7 @@ const SelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selected/${cls._id}`, {
+        fetch(`${backendUrl}/selected/${cls._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

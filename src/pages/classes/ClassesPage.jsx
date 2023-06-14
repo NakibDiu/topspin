@@ -11,8 +11,10 @@ const ClassesPage = () => {
   //     return [...classesArray];
   //   },
   // });
+  const backendUrl = import.meta.env.VITE_backendUrl;
+
   const fetchClasses = async () => {
-    const response = await fetch("http://localhost:5000/classes");
+    const response = await fetch(`${backendUrl}/classes`);
     const data = await response.json();
     return data;
   };

@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 
 const ManageClass = () => {
+  const backendUrl = import.meta.env.VITE_backendUrl
   const {
     isLoading,
     refetch,
@@ -11,13 +12,14 @@ const ManageClass = () => {
   } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/classes`);
+      const response = await fetch(`${backendUrl}/classes`);
       return response.json();
     },
   });
 
+
   const handleChangeStatus = (cls, updatedStatus) => {
-    fetch(`http://localhost:5000/classes/status/${cls._id}`, {
+    fetch(`${backendUrl}/classes/status/${cls._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

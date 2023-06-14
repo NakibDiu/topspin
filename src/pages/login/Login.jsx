@@ -48,13 +48,15 @@ const Login = () => {
       });
   };
 
+  const backendUrl = import.meta.env.VITE_backendUrl
+
   const handleGoogleSignUp = () => {
     signInWithGoogle()
       .then((userInfo) => {
         const newUser = userInfo.user;
         // console.log(newUser);
         const saveUser = { name: newUser.displayName, email: newUser.email };
-        fetch("http://localhost:5000/users", {
+        fetch(`${backendUrl}/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

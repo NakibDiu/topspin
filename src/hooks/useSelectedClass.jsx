@@ -4,12 +4,13 @@ import { useQuery } from "react-query";
 
 const useSelectedClass = () => {
   const { user } = useContext(AuthContext);
+  const backendUrl = import.meta.env.VITE_backendUrl
 
   const { isLoading, refetch, data: selectedClass = [] } = useQuery({
     queryKey: ["selected", user?.email],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/selected?email=${user?.email}`
+        `${backendUrl}/selected?email=${user?.email}`
       );
       return response.json();
     },
