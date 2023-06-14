@@ -1,5 +1,4 @@
 import React from "react";
-import { FaTrashAlt } from "react-icons/fa";
 import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 

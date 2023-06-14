@@ -1,11 +1,14 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaUser } from "react-icons/fa";
-import { GiPingPongBat } from "react-icons/gi";
+import { FaChalkboardTeacher, FaHome, FaUser } from "react-icons/fa";
+import { GiPingPongBat, GiTeacher } from "react-icons/gi";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
-  const isAdmin = true;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
 
   return (
     <div className="drawer lg:drawer-open">
@@ -54,7 +57,7 @@ const Dashboard = () => {
               <FaHome /> Home
             </NavLink>
           </li>
-          {isAdmin ? (
+          {isAdmin && (
             <>
               <li className=" font-semibold">
                 <NavLink to="/dashboard/manageClass">
@@ -67,16 +70,22 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
-          ) : isInstructor ? (
+          )}
+          {isInstructor && (
             <>
               <li className=" font-semibold">
-                <NavLink to="/dashboard/myClass">My Class</NavLink>
+                <NavLink to="/dashboard/myClass">
+                  <GiTeacher /> My Class
+                </NavLink>
               </li>
               <li className=" font-semibold">
-                <NavLink to="/dashboard/addClass">Add Class</NavLink>
+                <NavLink to="/dashboard/addClass">
+                  <FaChalkboardTeacher /> Add Class
+                </NavLink>
               </li>
             </>
-          ) : (
+          )}
+          {!isAdmin && !isInstructor && (
             <>
               <li className=" font-semibold">
                 <NavLink to="/dashboard/selectedClass">Selected Class</NavLink>

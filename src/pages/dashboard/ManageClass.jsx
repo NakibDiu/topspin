@@ -43,7 +43,7 @@ const ManageClass = () => {
   return (
     <div className="w-full">
       <div className="w-full min-h-[80px] bg-orange-100 flex justify-center items-center">
-        <h1 className="text-4xl font-bold text-gray-600">All Users</h1>
+        <h1 className="text-4xl font-bold text-gray-600">All Classes</h1>
       </div>
       <div className="my-4">
         {isLoading ? (
