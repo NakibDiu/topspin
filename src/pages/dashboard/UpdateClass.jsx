@@ -7,8 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const UpdateClass = () => {
-//   const backendUrl = import.meta.env.VITE_backendUrl;
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env.VITE_backendUrl;
   const { id } = useParams();
 
   const { isLoading, data: fetchedClass } = useQuery({

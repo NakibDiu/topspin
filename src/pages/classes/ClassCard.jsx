@@ -9,9 +9,13 @@ import {
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useSelectedClass from "../../hooks/useSelectedClass";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const ClassCard = ({ classData }) => {
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const { refetch } = useSelectedClass();
   const {
     name,
@@ -25,9 +29,8 @@ const ClassCard = ({ classData }) => {
   } = classData;
 
   const cardStyle = availableSeats === 0 ? "bg-red-400" : "bg-white";
-  const buttonDisabled = availableSeats === 0;
-  const backendUrl = import.meta.env.VITE_backendUrl
-
+  const buttonDisabled = availableSeats === 0 || isAdmin || isInstructor;
+  const backendUrl = import.meta.env.VITE_backendUrl;
 
   const handleSelect = (classData) => {
     if (user && user.email) {

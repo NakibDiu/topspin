@@ -3,13 +3,9 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useQuery } from "react-query";
 
 const EnrolledClass = () => {
-  // const backendUrl = import.meta.env.VITE_backendUrl
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env.VITE_backendUrl;
   const { user } = useContext(AuthContext);
-  const {
-    isLoading,
-    data: enrolledClasses = [],
-  } = useQuery({
+  const { isLoading, data: enrolledClasses = [] } = useQuery({
     queryKey: ["payments", user?.email],
     queryFn: async () => {
       const response = await fetch(

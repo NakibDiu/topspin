@@ -19,8 +19,7 @@ const CheckoutForm = ({ cls }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
 
-    const backendUrl = import.meta.env.VITE_backendUrl;
-//   const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env.VITE_backendUrl;
 
   useEffect(() => {
     if (price > 0) {
