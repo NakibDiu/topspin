@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
+  const backendUrl = import.meta.env.VITE_backendUrl
   const {
     isLoading,
     refetch,
@@ -14,7 +15,6 @@ const ManageUsers = () => {
       return response.json();
     },
   });
-  const backendUrl = import.meta.env.VITE_backendUrl
 
   const makeAdmin = (user) => {
     fetch(`${backendUrl}/users/admin/${user._id}`, {

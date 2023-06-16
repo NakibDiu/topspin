@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaChalkboardTeacher, FaHome, FaUser } from "react-icons/fa";
 import { GiPingPongBat, GiTeacher } from "react-icons/gi";
+import { AiOutlineDoubleRight, AiOutlineSelect } from "react-icons/ai";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    isInstructor
+      ? navigate("/dashboard/addClass")
+      : isAdmin
+      ? navigate("/dashboard/manageClass")
+      : navigate("/dashboard/selectedClass");
+  }, []);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -88,10 +97,15 @@ const Dashboard = () => {
           {!isAdmin && !isInstructor && (
             <>
               <li className=" font-semibold">
-                <NavLink to="/dashboard/selectedClass">Selected Class</NavLink>
+                <NavLink to="/dashboard/selectedClass">
+                  <AiOutlineSelect /> Selected Class
+                </NavLink>
               </li>
               <li className=" font-semibold">
-                <NavLink to="/dashboard/enrolledClass">Enrolled Class</NavLink>
+                <NavLink to="/dashboard/enrolledClass">
+                  <AiOutlineDoubleRight />
+                  Enrolled Class
+                </NavLink>
               </li>
             </>
           )}
