@@ -16,11 +16,13 @@ import AddClass from "../pages/dashboard/AddClass";
 import MyClass from "../pages/dashboard/MyClass";
 import InstructorRoute from "./InstructorRoute";
 import UpdateClass from "../pages/dashboard/UpdateClass";
+import ErrorPage from "../pages/error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -51,6 +53,7 @@ export const router = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "selectedClass",
