@@ -6,7 +6,7 @@
 - Feature 2:Admin Dashboard.
 - Feature 3: Different user functionality.
 - Feature 4: Add to Card functionality.
-- Feature 5: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+- Feature 5: Payment System (Stripe).
 
 ## Technologies Used
 
